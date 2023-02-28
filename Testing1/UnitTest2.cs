@@ -34,12 +34,12 @@ namespace stockTest
         }
 
         [TestMethod]
-        public void SupplierIDOK()
+        public void typeOK()
         {
             clsStock AStock = new clsStock();
-            Int32 TestID = 20;
-            AStock.supplierid = TestID;
-            Assert.AreEqual(AStock.supplierid, TestID);
+            string Testtype = "something";
+            AStock.type = Testtype;
+            Assert.AreEqual(AStock.type, Testtype);
         }
 
         [TestMethod]
