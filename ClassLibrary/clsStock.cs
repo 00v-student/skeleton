@@ -3,7 +3,7 @@ namespace ClassLibrary
 {
     public class clsStock
     {
-        private int mwatchid;
+        private Int32 mwatchid;
         public int watchid {
             get {
                 return mwatchid;
@@ -60,8 +60,8 @@ namespace ClassLibrary
                 mdesc = value;
             }
         }
-        private float mPrice;
-        public float price
+        private decimal mPrice;
+        public decimal price
         {
             get
             {
@@ -85,16 +85,26 @@ namespace ClassLibrary
             }
         }
         public bool Find(int testno)
+
         {
-            mwatchid = 2; 
-            mdesc = "Test";
-            mtype = "analog";
-            mPrice = 0.0F;
-            mStock = 1;
-            mdateadd = Convert.ToDateTime("16/9/2015");
-            mavailable = true;
-            //always return true
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@watchid", watchid);
+            DB.Execute("sproc_dbWatch_filterby");
+            if (DB.Count == 1)
+            {
+                mwatchid = Convert.ToInt32(DB.DataTable.Rows[0]["watchid"]);
+                mStock = Convert.ToInt32(DB.DataTable.Rows[0]["stock"]);
+                mdesc = Convert.ToString(DB.DataTable.Rows[0]["desc"]);
+                mtype = Convert.ToString(DB.DataTable.Rows[0]["type"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["price"]);
+                mdateadd = Convert.ToDateTime(DB.DataTable.Rows[0]["dateadd"]);
+                mavailable = Convert.ToBoolean(DB.DataTable.Rows[0]["available"]);
+                //always return true
+                return true;
+            }
+            else return false;
+            
+            
         }
     }
 }

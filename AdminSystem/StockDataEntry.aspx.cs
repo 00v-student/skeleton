@@ -18,7 +18,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsStock astock = new clsStock();
         astock.desc= txtDesc.Text;
-        astock.price = float.Parse(txtPrice.Text);
+        astock.price = decimal.Parse(txtPrice.Text);
         astock.dateadd = DateTime.Parse(txtDateAdded.Text);
         astock.stock = int.Parse(txtStock.Text);
         astock.type = txtType.Text;
