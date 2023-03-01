@@ -32,7 +32,7 @@ namespace stockTest
             AStock.dateadd = TestDate;
             Assert.AreEqual(AStock.dateadd, TestDate);
         }
-
+       
         [TestMethod]
         public void typeOK()
         {
@@ -68,6 +68,163 @@ namespace stockTest
             AStock.stock = Testno;
             Assert.AreEqual(AStock.stock, Testno);
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsStock AStock = new clsStock();
+            Boolean found = false;
+            
+            int Testno = 2;
+            found = AStock.Find(Testno);
+           
+            Assert.IsTrue(found);
+        }
+        public void TestWatchidFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean found = false;
+            Boolean OK = true;
+            int Testno = 2;
+            found = AStock.Find(Testno);
+            if (AStock.watchid != 2)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestDescfound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            int watchno = 2;
+            //invoke the method
+            Found = AStock.Find(watchno);
+            //check the property
+            if (AStock.desc != "Test")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
 
+        [TestMethod]
+        public void TestPricefound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            int watchno = 2;
+            //invoke the method
+            Found = AStock.Find(watchno);
+            //check the property
+            if (AStock.price != 0.0F)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestTypeFound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            int watchno = 2;
+            //invoke the method
+            Found = AStock.Find(watchno);
+            //check the property
+            if (AStock.type != "analog")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStockFound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            int watchno = 2;
+            //invoke the method
+            Found = AStock.Find(watchno);
+            //check the property
+            if (AStock.stock != 1)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            int watchno = 2;
+            //invoke the method
+            Found = AStock.Find(watchno);
+            //check the property
+            if (AStock.dateadd != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestAvailableFound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            int watchno = 2;
+            //invoke the method
+            Found = AStock.Find(watchno);
+            //check the property
+            if (AStock.available != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
     }
 }
+
+  
+
