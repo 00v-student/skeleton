@@ -56,7 +56,7 @@ namespace stockTest
         public void priceOK()
         {
             clsStock AStock = new clsStock();
-            float Testp = 0.0F;
+            decimal Testp = 0.0M;
             AStock.price = Testp;
             Assert.AreEqual(AStock.price, Testp);
         }
@@ -128,7 +128,7 @@ namespace stockTest
             //invoke the method
             Found = AStock.Find(watchno);
             //check the property
-            if (AStock.price != 0.0F)
+            if (AStock.price != 0.0m)
             {
                 OK = false;
             }
