@@ -74,7 +74,7 @@ namespace stockTest
             clsStock AStock = new clsStock();
             Boolean found = false;
             
-            int Testno = 2;
+            Int32 Testno = 2;
             found = AStock.Find(Testno);
            
             Assert.IsTrue(found);
@@ -84,7 +84,7 @@ namespace stockTest
             clsStock AStock = new clsStock();
             Boolean found = false;
             Boolean OK = true;
-            int Testno = 2;
+            Int32 Testno = 2;
             found = AStock.Find(Testno);
             if (AStock.watchid != 2)
             {
@@ -102,7 +102,7 @@ namespace stockTest
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int watchno = 2;
+            Int32 watchno = 2;
             //invoke the method
             Found = AStock.Find(watchno);
             //check the property
@@ -124,7 +124,7 @@ namespace stockTest
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int watchno = 2;
+            Int32 watchno = 2;
             //invoke the method
             Found = AStock.Find(watchno);
             //check the property
@@ -146,7 +146,7 @@ namespace stockTest
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int watchno = 2;
+            Int32 watchno = 2;
             //invoke the method
             Found = AStock.Find(watchno);
             //check the property
@@ -168,7 +168,7 @@ namespace stockTest
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int watchno = 2;
+            Int32 watchno = 2;
             //invoke the method
             Found = AStock.Find(watchno);
             //check the property
@@ -190,7 +190,7 @@ namespace stockTest
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int watchno = 2;
+            Int32 watchno = 2;
             //invoke the method
             Found = AStock.Find(watchno);
             //check the property
@@ -212,7 +212,7 @@ namespace stockTest
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int watchno = 2;
+            Int32 watchno = 2;
             //invoke the method
             Found = AStock.Find(watchno);
             //check the property

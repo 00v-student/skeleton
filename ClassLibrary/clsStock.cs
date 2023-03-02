@@ -88,7 +88,7 @@ namespace ClassLibrary
 
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@watchid", watchid);
+            DB.AddParameter("@watchid", testno);
             DB.Execute("sproc_dbWatch_filterby");
             if (DB.Count == 1)
             {
@@ -102,7 +102,7 @@ namespace ClassLibrary
                 //always return true
                 return true;
             }
-            else return false;
+            else { return false; }
             
             
         }
