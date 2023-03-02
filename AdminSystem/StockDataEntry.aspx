@@ -11,6 +11,7 @@
         <div>
             <asp:Label ID="watchid" runat="server" Text="Watch ID" width="91px"></asp:Label>
             <asp:TextBox ID="txtWatchID" runat="server"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="Button1_Click" style="margin-left: 35px" Text="Find" Width="66px" />
          <br>   <asp:Label ID="desc" runat="server" Text="Description" width="91px"></asp:Label>
             <asp:TextBox ID="txtDesc" runat="server"></asp:TextBox>
          <br>  <asp:Label ID="price" runat="server" Text="Price" width="91px"></asp:Label>
@@ -27,7 +28,7 @@
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" Width="39px" />
-        <asp:Button ID="btnCancel" runat="server" style="margin-left: 31px" Text="cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="margin-left: 31px" Text="cancel" Width="59px" />
     </form>
 </body>
 </html>
