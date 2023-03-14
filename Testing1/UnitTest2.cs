@@ -6,7 +6,14 @@ namespace stockTest
 {
     [TestClass]
     public class testStock
+
     {
+        String watchid = "2";
+        String desc = "desc";
+        String price = "0.0";
+        String dateadd = DateTime.Now.Date.ToString();
+        String stock = "2";
+        String type = "analog";
         public void InstanceOK() // can the instance be instantiated properly?
         {
             //create an instance of the class we want to create
@@ -222,6 +229,13 @@ namespace stockTest
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void ValidMethhodOK() {
+            clsStock astock = new clsStock();
+            String Error = " ";
+            Error = astock.Valid(watchid, desc,price, dateadd, stock, type);
+
         }
     }
 }
