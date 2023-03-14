@@ -106,5 +106,8 @@ namespace ClassLibrary
             
             
         }
+        public String Valid(desc,stock,type,dateadd) {
+            return " ";
+        }
     }
 }

@@ -7,6 +7,10 @@ namespace stockTest
     [TestClass]
     public class testStock
     {
+        String desc = "desc";
+        String stock = "1";
+        String type = "analog";
+        String dateadd = DateTime.Now.Date.ToString();
         public void InstanceOK() // can the instance be instantiated properly?
         {
             //create an instance of the class we want to create
@@ -32,7 +36,7 @@ namespace stockTest
             AStock.dateadd = TestDate;
             Assert.AreEqual(AStock.dateadd, TestDate);
         }
-       
+
         [TestMethod]
         public void typeOK()
         {
@@ -73,10 +77,10 @@ namespace stockTest
         {
             clsStock AStock = new clsStock();
             Boolean found = false;
-            
+
             Int32 Testno = 2;
             found = AStock.Find(Testno);
-           
+
             Assert.IsTrue(found);
         }
         public void TestWatchidFound()
@@ -222,6 +226,15 @@ namespace stockTest
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            String Error = " ";
+            Error = AStock.Valid(desc, stock, type, dateadd);
+            Assert.AreEqual(Error, " ");
         }
     }
 }
