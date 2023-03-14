@@ -106,5 +106,10 @@ namespace ClassLibrary
             
             
         }
+
+        public string Valid(string watchid, string desc, string price, string dateadd, string stock, string type)
+        {
+            return " ";
+        }
     }
 }
