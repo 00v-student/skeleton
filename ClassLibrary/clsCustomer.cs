@@ -11,10 +11,34 @@ namespace ClassLibrary
         public string EmailAddress { get; set; }
         public bool VerifiedAccount { get; set; }
         public string Gender { get; set; }
+        public string CustomerID { get; set; }
 
-        public string Valid(string firstname, string lastname, string dateofbirth, string phonenumber, string emailaddress, string verifiedaccount, string gender)
+        public string Valid(string CustomerID, string FirstName, string LastName, string DateOfbirth, string PhoneNumber, string EmailAddress, string VerifiedAccount, string Gender)
         {
-            return "";
+            string Error = "";
+
+            if(FirstName.Length == 0)
+            {
+                Error =  "First Name cannot be blank";
+            }
+            else if(FirstName.Length < 1)
+            {
+                Error = "First Name must be at least 1 characters";
+            }
+            else if(FirstName.Length > 50)
+            {
+                Error = "First Name must be less than or equal to 50 characters";
+            }
+            if(PhoneNumber.Length < 3)
+            {
+                Error += "Phone Number must be at least 3 characters";
+            }
+            if (PhoneNumber.Length > 11)
+            {
+                Error += "Phone number must be at most 11 characters";
+            }
+            return Error;
+           
         }
     }
 }
