@@ -17,7 +17,7 @@ namespace ClassLibrary
         {
             string Error = "";
 
-            if(FirstName.Length == 0)
+            if (FirstName.Length == 0)
             {
                 Error =  "First Name cannot be blank";
             }
@@ -37,8 +37,30 @@ namespace ClassLibrary
             {
                 Error += "Phone number must be at most 11 characters";
             }
+
             return Error;
            
+        }
+
+        public string Valid(string customerID, string firstName, string lastName, DateTime dateOfBirth, string phoneNumber, string emailAddress, string verifiedAccount, string gender)
+        {
+            string Error = "";
+
+
+            DateTime DateOfBirthMin = DateTime.Today.AddYears(-100);
+            DateTime DateOfBirthMax = DateTime.Today.AddYears(-18);
+
+            if (dateOfBirth < DateOfBirthMin)
+            {
+                Error = "The date of birth cannot be more than 100 years ago.";
+            }
+            else if (dateOfBirth > DateOfBirthMax)
+            {
+                Error = "The customer must be 18 or older to register.";
+            }
+            
+            return Error;
+
         }
     }
 }
