@@ -280,5 +280,38 @@ namespace Testing6
             Assert.AreNotEqual(Error, "");
         }
 
+        [TestMethod]
+        public void DateOfBirthMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            DateTime DateOfBirth = DateTime.Today.AddYears(-100);
+            string Error = AnCustomer.Valid(CustomerID, FirstName, LastName, DateOfBirth, PhoneNumber, EmailAddress, VerifiedAccount, Gender);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthMinMinusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            DateTime DateOfBirth = DateTime.Today.AddYears(-101);
+            string Error = AnCustomer.Valid(CustomerID, FirstName, LastName, DateOfBirth, PhoneNumber, EmailAddress, VerifiedAccount, Gender);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOfBirthMinPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            DateTime DateOfBirth = DateTime.Today.AddYears(-99);
+            string Error = AnCustomer.Valid(CustomerID, FirstName, LastName, DateOfBirth, PhoneNumber, EmailAddress, VerifiedAccount, Gender);
+            Assert.AreEqual(Error, "");
+        }
+
+
+       
+
+       
+
+
     }
 }
