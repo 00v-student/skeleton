@@ -113,7 +113,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string name, string department, string contactNumber, string hireDate)
+        public string Valid(string name, string department, string contactNumber, string hireDate, bool weekendAvailability)
         {
             string Error = "";
             DateTime HireDateTemp;
@@ -141,6 +141,7 @@ namespace ClassLibrary
                 {
                     Error = Error + "Your hiring date cannot be over 5 years in the future.";
                 }
+
             } catch
             {
                 Error = Error + "You have not entered a valid date.";
@@ -152,6 +153,14 @@ namespace ClassLibrary
             if (contactNumber.Length > 50)
             {
                 Error += "Whoa! Your contact number is way too large.";
+            }
+            if ((weekendAvailability =! true) && (weekendAvailability =! false))
+            {
+                Error += "You must enter either true, or false.";
+            }
+            if ((department != "HR") && (department != "Sales") && (department != "Admin"))
+            {
+                Error += "You must enter either 'HR', 'Sales, or 'Admin', please ensure you get the casing correct.";
             }
             return Error;
         }
