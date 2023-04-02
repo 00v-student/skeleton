@@ -113,7 +113,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string name, string department, string contactNumber, string hireDate, bool weekendAvailability)
+        public string Valid(string name, string department, string contactNumber, string hireDate)
         {
             string Error = "";
             DateTime HireDateTemp;
@@ -153,10 +153,6 @@ namespace ClassLibrary
             if (contactNumber.Length > 50)
             {
                 Error += "Whoa! Your contact number is way too large.";
-            }
-            if ((weekendAvailability =! true) && (weekendAvailability =! false))
-            {
-                Error += "You must enter either true, or false.";
             }
             if ((department != "HR") && (department != "Sales") && (department != "Admin"))
             {
