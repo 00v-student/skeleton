@@ -2,7 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Testing3
+
+namespace TestingStaff
 {
     [TestClass]
     public class testStaff
@@ -225,7 +226,7 @@ namespace Testing3
         {
             clsStaff AStaff = new clsStaff();
             String Error = "";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -235,7 +236,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string Name = ""; //Name minus one is 0 char
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -245,7 +246,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string Name = "H";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -255,7 +256,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string Name = "Ha";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -265,7 +266,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string Name = "1234567890123456789012345678901234567890123456789";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -275,7 +276,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string Name = "12345678901234567890123456789012345678901234567890";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -285,7 +286,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string Name = "123456789012345678901234567890123456789012345678901";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreNotEqual(Error, ""); //Error message should not be empty
         }
 
@@ -295,7 +296,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string Name = "1234567890123456789012345";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -306,7 +307,7 @@ namespace Testing3
             string Error = "";
             string Name = "";
             Name = Name.PadRight(1000, 'H');
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -318,7 +319,7 @@ namespace Testing3
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(-1000);
             string HireDate = TestDate.ToString();
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreNotEqual(Error, ""); // there should be some error messagE
         }
 
@@ -330,7 +331,7 @@ namespace Testing3
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(1000);
             string HireDate = TestDate.ToString();
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreNotEqual(Error, ""); // there should be some error messagE
         }
 
@@ -342,7 +343,7 @@ namespace Testing3
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(-40);
             string HireDate = TestDate.ToString();
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -354,7 +355,7 @@ namespace Testing3
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(-41);
             string HireDate = TestDate.ToString();
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreNotEqual(Error, ""); // there should be some error messagE
         }
 
@@ -366,7 +367,7 @@ namespace Testing3
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(-39);
             string HireDate = TestDate.ToString();
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -378,7 +379,7 @@ namespace Testing3
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(5);
             string HireDate = TestDate.ToString();
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -390,7 +391,7 @@ namespace Testing3
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(4);
             string HireDate = TestDate.ToString();
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -402,7 +403,7 @@ namespace Testing3
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(6);
             string HireDate = TestDate.ToString();
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -414,7 +415,7 @@ namespace Testing3
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(-19);
             string HireDate = TestDate.ToString();
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -424,7 +425,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string HireDate = "fruit"; // test data
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -433,8 +434,8 @@ namespace Testing3
         {
             clsStaff AStaff = new clsStaff();
             string Error = "";
-            string ContactNumber = "123"; 
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            string ContactNumber = "123";
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, ""); //should not be an error
         }
 
@@ -444,7 +445,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string ContactNumber = "1234";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, ""); //should not be an error
         }
 
@@ -454,7 +455,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string ContactNumber = "12";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreNotEqual(Error, ""); 
         }
 
@@ -466,7 +467,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string ContactNumber = "+240 87092 5333";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, ""); //should not be an error
         }
 
@@ -476,7 +477,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string ContactNumber = "+240 87092 533";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, ""); //should not be an error
         }
 
@@ -486,7 +487,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string ContactNumber = "+240 87092 5333X";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, ""); //should be an error
         }
 
@@ -496,29 +497,10 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string ContactNumber = "1234567890 1234567890 1234567890 1234567890 1234567890 1234567890";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, ""); //should be an error
         }
 
-        [TestMethod]
-        public void WeekendAvailabilityTrue()
-        {
-            clsStaff AStaff = new clsStaff();
-            string Error = "";
-            Boolean WeekendAvailability = true;
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
-            Assert.AreEqual(Error, ""); //should not be an error
-        }
-
-        [TestMethod]
-        public void WeekendAvailabilityFalse()
-        {
-            clsStaff AStaff = new clsStaff();
-            string Error = "";
-            Boolean WeekendAvailability = false;
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
-            Assert.AreEqual(Error, ""); //should not be an error
-        }
 
         [TestMethod]
         public void departmentValidData()
@@ -526,7 +508,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string Department = "HR";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreEqual(Error, ""); //should not be an error
         }
 
@@ -536,7 +518,7 @@ namespace Testing3
             clsStaff AStaff = new clsStaff();
             string Error = "";
             string Department = "fruit";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate, WeekendAvailability);
+            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
             Assert.AreNotEqual(Error, ""); //should be an error
         }
 
