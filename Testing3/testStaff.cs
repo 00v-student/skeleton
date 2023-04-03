@@ -12,7 +12,6 @@ namespace TestingStaff
         string Department = "HR";
         string ContactNumber = "07889937456";
         string HireDate = DateTime.Now.Date.ToString();
-        Boolean WeekendAvailability = true;
         //string DateAdded = DateTime.Now.Date.ToString();
 
         [TestMethod]
