@@ -17,7 +17,7 @@ namespace ClassLibrary
         {
 
             clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_tblAddress_SelectAll");
+            DB.Execute("sproc_tblStaff_SelectAll");
             PopulateArray(DB);
         }
 
@@ -95,7 +95,7 @@ namespace ClassLibrary
             DB.AddParameter("@StaffID", mThisStaff.StaffId);
             DB.AddParameter("@Name", mThisStaff.Name);
             //execute the query returning the primary key value
-            return DB.Execute("sproc_tblAddress_Insert");
+            return DB.Execute("sproc_tblStaff_Insert");
         }
 
         public void Delete()
@@ -103,7 +103,7 @@ namespace ClassLibrary
             //deletes the record pointed to by thisAddress
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@AddressNo", mThisStaff.StaffId);
-            DB.Execute("sproc_tblAddress_Delete");
+            DB.Execute("sproc_tblStaff_Delete");
         }
 
         public void Update()
@@ -119,10 +119,12 @@ namespace ClassLibrary
             DB.AddParameter("@StaffID", mThisStaff.StaffId);
             DB.AddParameter("@Name", mThisStaff.Name);
             //execute the stored procedure
-            DB.Execute("sproc_tblAddress_Update");
+            DB.Execute("sproc_tblStaff_Update");
         }
 
-    }
+        
 
+    }
+    
 
 }

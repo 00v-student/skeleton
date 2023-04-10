@@ -20,8 +20,7 @@
         <asp:TextBox ID="txtHireDate" runat="server"></asp:TextBox>
         <p>
             <asp:Label ID="lblDepartment" runat="server" Text="Department" width="149px"></asp:Label>
-            <asp:DropDownList ID="ddlDepartment" runat="server">
-            </asp:DropDownList>
+        <asp:TextBox ID="txtDepartment" runat="server"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="lblContactNumber" runat="server" Text="Contact Number" width="149px" TabIndex="1"></asp:Label>
