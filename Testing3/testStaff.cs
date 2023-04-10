@@ -497,7 +497,7 @@ namespace TestingStaff
             string Error = "";
             string ContactNumber = "1234567890 1234567890 1234567890 1234567890 1234567890 1234567890";
             Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
-            Assert.AreEqual(Error, ""); //should be an error
+            Assert.AreNotEqual(Error, ""); //should be an error
         }
 
 

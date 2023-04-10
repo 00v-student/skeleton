@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using ClassLibrary;
 
-namespace Testing3
+namespace TestingStaff
 {
     [TestClass]
-    public class tstStaffCollection
+    public class TstStaffCollection
     {
 
         [TestMethod]
@@ -49,14 +49,6 @@ namespace Testing3
             Assert.AreEqual(AllStaff.ThisStaff, testStaff);
         }
 
-        [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsStaffCollection AllStaff = new clsStaffCollection();
-            Int32 SomeCount = 0;
-            AllStaff.Count = SomeCount;
-            Assert.AreEqual(AllStaff.Count, SomeCount);
-        }
 
         public void ListAndCountOK()
         {
