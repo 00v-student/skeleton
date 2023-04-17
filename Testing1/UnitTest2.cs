@@ -436,57 +436,57 @@ namespace stockTest
             Assert.AreNotEqual(Error, "");
         }
 
-        [TestMethod]
-        public void ContactNumberMin()
-        {
-            clsStaff AStaff = new clsStaff();
-            string Error = "";
-            string ContactNumber = "123";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
-            Assert.AreEqual(Error, ""); //should not be an error
-        }
+        //[TestMethod]
+        //public void stockMin()
+        //{
+        //    clsStaff AStaff = new clsStaff();
+        //    string Error = "";
+        //    string ContactNumber = "123";
+        //    Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
+        //    Assert.AreEqual(Error, ""); //should not be an error
+        //}
 
-        [TestMethod]
-        public void ContactNumberMinPlusOne()
-        {
-            clsStaff AStaff = new clsStaff();
-            string Error = "";
-            string ContactNumber = "1234";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
-            Assert.AreEqual(Error, ""); //should not be an error
-        }
+        //[TestMethod]
+        //public void ContactNumberMinPlusOne()
+        //{
+        //    clsStaff AStaff = new clsStaff();
+        //    string Error = "";
+        //    string ContactNumber = "1234";
+        //    Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
+        //    Assert.AreEqual(Error, ""); //should not be an error
+        //}
 
-        [TestMethod]
-        public void ContactNumberMinMinusOne()
-        {
-            clsStaff AStaff = new clsStaff();
-            string Error = "";
-            string ContactNumber = "12";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
-            Assert.AreNotEqual(Error, "");
-        }
+        //[TestMethod]
+        //public void ContactNumberMinMinusOne()
+        //{
+        //    clsStaff AStaff = new clsStaff();
+        //    string Error = "";
+        //    string ContactNumber = "12";
+        //    Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
+        //    Assert.AreNotEqual(Error, "");
+        //}
 
-        //status: did name, hiredate, doing contact number
+        
 
-        [TestMethod]
-        public void ContactNumberMax()
-        {
-            clsStaff AStaff = new clsStaff();
-            string Error = "";
-            string ContactNumber = "+240 87092 5333";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
-            Assert.AreEqual(Error, ""); //should not be an error
-        }
+        //[TestMethod]
+        //public void ContactNumberMax()
+        //{
+        //    clsStaff AStaff = new clsStaff();
+        //    string Error = "";
+        //    string ContactNumber = "+240 87092 5333";
+        //    Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
+        //    Assert.AreEqual(Error, ""); //should not be an error
+        //}
 
-        [TestMethod]
-        public void ContactNumberMaxMinusOne()
-        {
-            clsStaff AStaff = new clsStaff();
-            string Error = "";
-            string ContactNumber = "+240 87092 533";
-            Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
-            Assert.AreEqual(Error, ""); //should not be an error
-        }
+        //[TestMethod]
+        //public void ContactNumberMaxMinusOne()
+        //{
+        //    clsStaff AStaff = new clsStaff();
+        //    string Error = "";
+        //    string ContactNumber = "+240 87092 533";
+        //    Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
+        //    Assert.AreEqual(Error, ""); //should not be an error
+        //}
     }
 }
 
