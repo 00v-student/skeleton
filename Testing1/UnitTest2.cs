@@ -271,9 +271,8 @@ namespace stockTest
         public void descMaxMinusOne()
         {
             clsStock AStock = new clsStock();
-            string Error = "";
             string desc = "1234567890123456789012345678901234567890123456789";
-            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            string Error = AStock.Valid(desc, price, dateadd, stock, type);
             Assert.AreEqual(Error, "");
         }
 
@@ -311,182 +310,294 @@ namespace stockTest
         public void descExtremeMax()
         {
             clsStock AStock = new clsStock();
-            string Error = "";
             string desc = "";
             desc = desc.PadRight(1000, 'H');
-            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            string Error = AStock.Valid(desc, price, dateadd, stock, type);
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void DateAddExtremeMin()
+        public void dateExtremeMin()
         {
             clsStock AStock = new clsStock();
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(-100);
-            string dateadd = TestDate.ToString();
-            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            string date = TestDate.ToString();
+            Error = AStock.Valid(desc, price, date, stock, type);
             Assert.AreNotEqual(Error, ""); // there should be some error messagE
         }
 
         [TestMethod]
-        public void DateAddExtremeMax()
+        public void dateExtremeMax()
         {
             clsStock AStock = new clsStock();
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(100);
-            string dateadd = TestDate.ToString();
-            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            string date = TestDate.ToString();
+            Error = AStock.Valid(desc, price, date, stock, type);
             Assert.AreNotEqual(Error, ""); // there should be some error messagE
         }
 
         [TestMethod]
-        public void DateAddMin()
+        public void dateMin()
         {
             clsStock AStock = new clsStock();
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(-10);
-            string dateadd = TestDate.ToString();
-            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            string date = TestDate.ToString();
+            Error = AStock.Valid(desc, price, date, stock, type);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void DateAddMinMinusOne()
+        public void dateMinMinusOne()
         {
             clsStock AStock = new clsStock();
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(-9);
-            string dateadd = TestDate.ToString();
-            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            string date = TestDate.ToString();
+            Error = AStock.Valid(desc, price, date, stock, type);
             Assert.AreNotEqual(Error, ""); // there should be some error messagE
         }
 
         [TestMethod]
-        public void DateAddMinPlusOne()
+        public void dateMinPlusOne()
         {
             clsStock AStock = new clsStock();
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(-11);
-            string dateadd = TestDate.ToString();
-            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            string date = TestDate.ToString();
+            Error += AStock.Valid(desc, price, date, stock, type);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void DateAddMax()
+        public void dateMax()
         {
             clsStock AStock = new clsStock();
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(2);
-            string dateadd = TestDate.ToString();
-            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            string date = TestDate.ToString();
+            Error = AStock.Valid(desc, price, date, stock, type);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void DateAddMaxMinusOne()
+        public void dateMaxMinusOne()
         {
             clsStock AStock = new clsStock();
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(1);
-            string dateadd = TestDate.ToString();
-            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            string date = TestDate.ToString();
+            Error = AStock.Valid(desc, price, date, stock, type);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void DateAddMaxPlusOne()
+        public void dateMaxPlusOne()
         {
             clsStock AStock = new clsStock();
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(3);
-            string dateadd = TestDate.ToString();
-            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            string date = TestDate.ToString();
+            Error = AStock.Valid(desc, price, date, stock, type);
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void DateAddMid()
+        public void dateMid()
         {
             clsStock AStock = new clsStock();
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(-4);
-            string dateadd = TestDate.ToString();
-            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            string date = TestDate.ToString();
+            Error = AStock.Valid(desc, price, date, stock, type);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void DateAddInvalid()
+        public void dateInvalid()
         {
             clsStock AStock = new clsStock();
             string Error = "";
-            string dateadd = "fruit"; // test data
-            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            string date = "fruit"; // test data
+            Error = AStock.Valid(desc, price, date, stock, type);
             Assert.AreNotEqual(Error, "");
         }
 
-        //[TestMethod]
-        //public void stockMin()
-        //{
-        //    clsStaff AStaff = new clsStaff();
-        //    string Error = "";
-        //    string ContactNumber = "123";
-        //    Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
-        //    Assert.AreEqual(Error, ""); //should not be an error
-        //}
+        [TestMethod]
+        public void stockMin()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string s = "1";
+            Error = AStock.Valid(desc, price, dateadd, s, type);
+            Assert.AreEqual(Error, ""); //should not be an error
+        }
 
-        //[TestMethod]
-        //public void ContactNumberMinPlusOne()
-        //{
-        //    clsStaff AStaff = new clsStaff();
-        //    string Error = "";
-        //    string ContactNumber = "1234";
-        //    Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
-        //    Assert.AreEqual(Error, ""); //should not be an error
-        //}
+        [TestMethod]
+        public void StockMinPlusOne()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string s = "2";
+            Error = AStock.Valid(desc, price, dateadd, s, type);
+            Assert.AreEqual(Error,""); //should not be an error
+        }
 
-        //[TestMethod]
-        //public void ContactNumberMinMinusOne()
-        //{
-        //    clsStaff AStaff = new clsStaff();
-        //    string Error = "";
-        //    string ContactNumber = "12";
-        //    Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
-        //    Assert.AreNotEqual(Error, "");
-        //}
+        [TestMethod]
+        public void StockMinMinusOne()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string s = "0";
+            Error = AStock.Valid(desc, price, dateadd, s, type);
+            Assert.AreNotEqual(Error,"");
+        }
 
-        
 
-        //[TestMethod]
-        //public void ContactNumberMax()
-        //{
-        //    clsStaff AStaff = new clsStaff();
-        //    string Error = "";
-        //    string ContactNumber = "+240 87092 5333";
-        //    Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
-        //    Assert.AreEqual(Error, ""); //should not be an error
-        //}
 
-        //[TestMethod]
-        //public void ContactNumberMaxMinusOne()
-        //{
-        //    clsStaff AStaff = new clsStaff();
-        //    string Error = "";
-        //    string ContactNumber = "+240 87092 533";
-        //    Error = AStaff.Valid(Name, Department, ContactNumber, HireDate);
-        //    Assert.AreEqual(Error, ""); //should not be an error
-        //}
+        [TestMethod]
+        public void StockMax()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string s = "100";
+            Error = AStock.Valid(desc, price, dateadd, s, type);
+            Assert.AreEqual(Error, ""); //should not be an error
+        }
+
+        [TestMethod]
+        public void StockMaxMinusOne()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string s = "99";
+            Error = AStock.Valid(desc, price, dateadd, s, type);
+            Assert.AreEqual(Error, ""); //should not be an error
+        }
+        [TestMethod]
+        public void StockMid()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string s = "50";
+            Error = AStock.Valid(desc, price, dateadd, s, type);
+            Assert.AreEqual(Error, ""); //should not be an error
+        }
+        [TestMethod]
+        public void StockMaxPlusOne()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string s = "101";
+            Error = AStock.Valid(desc, price, dateadd, s, type);
+            Assert.AreNotEqual(Error, ""); //should not be an error
+        }
+        [TestMethod]
+        public void PriceMin()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string price = "1.0";
+            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            Assert.AreEqual(Error, ""); //should not be an error
+        }
+
+        [TestMethod]
+        public void PriceMinPlusOne()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string price = "2.0";
+            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            Assert.AreEqual(Error, ""); //should not be an error
+        }
+
+        [TestMethod]
+        public void PriceMinMinusOne()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string price = "0.0";
+            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            Assert.AreNotEqual(Error, ""); //should  be an error
+        }
+        [TestMethod]
+        public void PriceMid()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string price = "500000.0";
+            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            Assert.AreEqual(Error, ""); //should not be an error
+        }
+
+
+        [TestMethod]
+        public void PriceMax()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string price = "1000000.0";
+            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            Assert.AreEqual(Error, ""); //should not be an error
+        }
+        [TestMethod]
+        public void PriceMaxMinusOne()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string price = "999999.0";
+            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            Assert.AreEqual(Error, ""); //should not be an error
+        }
+        [TestMethod]
+        public void PriceMaxPlusOne()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string price = "1000001.0";
+            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            Assert.AreNotEqual(Error, ""); //should  be an error
+        }
+        [TestMethod]
+        public void typecheckwrong()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string t = "digitalanalog";
+            Error = AStock.Valid(desc, price, dateadd, stock, t);
+            Assert.AreNotEqual(Error, ""); //should  be an error
+        }
+        [TestMethod]
+        public void typecheckrightdig()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string t = "digital";
+            Error = AStock.Valid(desc, price, dateadd, stock, t);
+            Assert.AreEqual(Error, ""); //should  be an error
+        }
+        [TestMethod]
+        public void typecheckrightana()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string t = "analog";
+            Error = AStock.Valid(desc, price, dateadd, stock, t);
+            Assert.AreEqual(Error,""); //should not be an error
+        }
+
     }
 }
 

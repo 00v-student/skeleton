@@ -109,19 +109,12 @@ namespace ClassLibrary
 
         public string Valid(string desc, string price, string dateadd, string stock, string type)
         {
-            string Error = "";
+            string err = "";
             DateTime dateaddtmp;
 
 
 
-            if (price.Length == 0)
-            {
-                Error = Error + "You have not typed any price : ";
-            }
-            if (price.Length > 50)
-            {
-                Error = Error + "Your price is too much : ";
-            }
+            
             try
             {
 
@@ -129,31 +122,47 @@ namespace ClassLibrary
 
                 if (dateaddtmp < DateTime.Now.Date.AddYears(-40))
                 {
-                    Error = Error + "Your date cannot be over 40 years past today.";
+                    err = err + "Your date cannot be over 40 years past today.";
                 }
                 if (dateaddtmp > DateTime.Now.Date.AddYears(5))
                 {
-                    Error = Error + "Your date cannot be over 5 years in the future.";
+                    err = err + "Your date cannot be over 5 years in the future.";
                 }
 
             }
             catch
             {
-                Error = Error + "You have not entered a valid date.";
+                err = err + "You have not entered a valid date.";
             }
             if (desc.Length < 3)
             {
-                Error += "Your desc is too short";
+                err += "Your desc is too short";
             }
             if (desc.Length > 50)
             {
-                Error += "Whoa! Your desc is way too large.";
+                err += "Whoa! Your desc is way too large.";
             }
             if ((type != "digital") && (type != "analog") )
             {
-                Error += "You must enter either digital or analog           , please ensure you get the casing correct.";
+                err += "You must enter either digital or analog           , please ensure you get the casing correct.";
             }
-            return Error;
+            if (Convert.ToDecimal(price) < 1.0m)
+            {
+                err = err + "too low";
+            }
+            if (Convert.ToDecimal(price) > 1000000.0m)
+            {
+                err = err + "too high";
+            }
+            if (Convert.ToInt32(stock) < 0)
+            {
+                err = err + "too less";
+            }
+            if (Convert.ToInt32(stock) > 100)
+            {
+                err = err + "too many";
+            }
+            return err;
         }
     }
 }

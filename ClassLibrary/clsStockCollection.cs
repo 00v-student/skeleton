@@ -86,13 +86,13 @@ namespace ClassLibrary
 
         public int Add()
         {
-            //adds a new record to the database based on the values of thisAddress
+            //adds a new record to the database based on the values ofwatchid
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@dateadd", mThisStock.dateadd);
             DB.AddParameter("@available", mThisStock.available);
             DB.AddParameter("@price", mThisStock.price);
             DB.AddParameter("@desc", mThisStock.desc);
-            DB.AddParameter("@watchid", mThisStock.watchid);
+            DB.AddParameter("@stock", mThisStock.stock);
             DB.AddParameter("@type", mThisStock.type);
             //execute the query returning the primary key value
             return DB.Execute("sproc_tblStock_Insert");
@@ -100,15 +100,15 @@ namespace ClassLibrary
 
         public void Delete()
         {
-            //deletes the record pointed to by thisAddress
+            //deletes the record pointed to by watchid
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@AddressNo", mThisStock.watchid);
+            //DB.AddParameter("@watchid", mThisStock.watchid);
             DB.Execute("sproc_tblStock_Delete");
         }
 
         public void Update()
         {
-            //update an existing record based on the values of thisAddress
+            //update an existing record based on the values of watchid
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
@@ -116,7 +116,7 @@ namespace ClassLibrary
             DB.AddParameter("@available", mThisStock.available);
             DB.AddParameter("@price", mThisStock.price);
             DB.AddParameter("@desc", mThisStock.desc);
-            DB.AddParameter("@watchid", mThisStock.watchid);
+            DB.AddParameter("@stock", mThisStock.stock);
             DB.AddParameter("@type", mThisStock.type);
             //execute the stored procedure
             DB.Execute("sproc_tblStock_Update");

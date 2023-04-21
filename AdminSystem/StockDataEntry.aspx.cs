@@ -17,22 +17,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStock astock = new clsStock();
-        astock.watchid = int.Parse(txtWatchID.Text);
-        astock.desc= txtDesc.Text;
-        astock.price = decimal.Parse(txtPrice.Text);
-        astock.dateadd = DateTime.Parse(txtDateAdded.Text);
-        astock.stock = int.Parse(txtStock.Text);
-        astock.type = txtType.Text;
-        astock.available = available.Checked;
+        String watchid =(txtWatchID.Text);
+        String desc= txtDesc.Text;
+        String price =(txtPrice.Text);
+        String dateadd =(txtDateAdded.Text);
+        String stock = (txtStock.Text);
+        String type = txtType.Text;
+        String avail = available.Text;
         Session["astock"] = astock;
         Response.Redirect("StockViewer.aspx");
+        String err = "";
+        err = astock.Valid(desc, price, dateadd, stock, type);
+        if (err == "")
+        {
+
+            astock.watchid = int.Parse(txtWatchID.Text);
+            astock.desc = txtDesc.Text;
+            astock.price = decimal.Parse(txtPrice.Text);
+            astock.dateadd = DateTime.Parse(txtDateAdded.Text);
+            astock.stock = int.Parse(txtStock.Text);
+            astock.type = txtType.Text;
+            astock.available = available.Checked;
+            Session["astock"] = astock;
+            Response.Redirect("StockViewer.aspx");
+        }
+        else lblError.Text = err;
     }
 
     
 
 
 
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void Buttonfind_Click(object sender, EventArgs e)
     {
         clsStock AStock = new clsStock();
 
