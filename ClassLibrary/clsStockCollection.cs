@@ -17,7 +17,7 @@ namespace ClassLibrary
         {
 
             clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_tbldbWatch_SelectAll");
+            DB.Execute("sproc_tblWatch_SelectAll");
             PopulateArray(DB);
         }
 
@@ -95,7 +95,7 @@ namespace ClassLibrary
             DB.AddParameter("@stock", mThisStock.stock);
             DB.AddParameter("@type", mThisStock.type);
             //execute the query returning the primary key value
-            return DB.Execute("sproc_tblStock_Insert");
+            return DB.Execute("sproc_tblWatch_Insert");
         }
 
         public void Delete()
@@ -103,7 +103,7 @@ namespace ClassLibrary
             //deletes the record pointed to by watchid
             clsDataConnection DB = new clsDataConnection();
             //DB.AddParameter("@watchid", mThisStock.watchid);
-            DB.Execute("sproc_tblStock_Delete");
+            DB.Execute("sproc_tblWatch_Delete");
         }
 
         public void Update()
@@ -119,11 +119,17 @@ namespace ClassLibrary
             DB.AddParameter("@stock", mThisStock.stock);
             DB.AddParameter("@type", mThisStock.type);
             //execute the stored procedure
-            DB.Execute("sproc_tblStock_Update");
+            DB.Execute("sproc_tblWatch_Update");
         }
 
-        
-
+        public void ReportBytype(string v)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@type", v);
+            DB.Execute("sproc_tblWatch_FilterByType");
+            PopulateArray(DB);
+        }
+      
     }
     
 
