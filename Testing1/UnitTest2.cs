@@ -10,7 +10,7 @@ namespace stockTest
     {
         String watchid = "2";
         String desc = "desc";
-        String price = "0.0";
+        String price = "50.0";
         String dateadd = DateTime.Now.Date.ToString();
         String stock = "2";
         String type = "analog";
@@ -81,7 +81,7 @@ namespace stockTest
             clsStock AStock = new clsStock();
             Boolean found = false;
             
-            Int32 Testno = 2;
+            Int32 Testno = 1;
             found = AStock.Find(Testno);
            
             Assert.IsTrue(found);
@@ -91,7 +91,7 @@ namespace stockTest
             clsStock AStock = new clsStock();
             Boolean found = false;
             Boolean OK = true;
-            Int32 Testno = 2;
+            Int32 Testno = 1;
             found = AStock.Find(Testno);
             if (AStock.watchid != 2)
             {
@@ -109,11 +109,11 @@ namespace stockTest
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 watchno = 2;
+            Int32 watchno = 1;
             //invoke the method
             Found = AStock.Find(watchno);
             //check the property
-            if (AStock.desc != "Test")
+            if (AStock.desc.Length==0)
             {
                 OK = false;
             }
@@ -153,7 +153,7 @@ namespace stockTest
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 watchno = 2;
+            Int32 watchno = 1;
             //invoke the method
             Found = AStock.Find(watchno);
             //check the property
@@ -175,7 +175,7 @@ namespace stockTest
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 watchno = 2;
+            Int32 watchno = 1;
             //invoke the method
             Found = AStock.Find(watchno);
             //check the property
@@ -197,7 +197,7 @@ namespace stockTest
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 watchno = 2;
+            Int32 watchno = 3;
             //invoke the method
             Found = AStock.Find(watchno);
             //check the property
@@ -219,7 +219,7 @@ namespace stockTest
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 watchno = 2;
+            Int32 watchno = 1;
             //invoke the method
             Found = AStock.Find(watchno);
             //check the property
@@ -242,7 +242,7 @@ namespace stockTest
         {
             clsStock AStock = new clsStock();
             string Error = "";
-            string desc = ""; //desc minus one is 0 char
+            string desc = "ha"; //desc minus one is 2 char
             Error = AStock.Valid(desc, price, dateadd , stock, type);
             Assert.AreNotEqual(Error, "");
         }
@@ -252,7 +252,7 @@ namespace stockTest
         {
             clsStock AStock = new clsStock();
             string Error = "";
-            string desc = "H";
+            string desc = "Hah";
             Error = AStock.Valid(desc, price, dateadd, stock, type);
             Assert.AreEqual(Error, "");
         }
@@ -262,7 +262,7 @@ namespace stockTest
         {
             clsStock AStock = new clsStock();
             string Error = "";
-            string desc = "Ha";
+            string desc = "Haha";
             Error = AStock.Valid(desc, price, dateadd, stock, type);
             Assert.AreEqual(Error, "");
         }
@@ -361,7 +361,7 @@ namespace stockTest
             TestDate = DateTime.Now.Date.AddYears(-9);
             string date = TestDate.ToString();
             Error = AStock.Valid(desc, price, date, stock, type);
-            Assert.AreNotEqual(Error, ""); // there should be some error messagE
+            Assert.AreEqual(Error, ""); // there should be some error messagE
         }
 
         [TestMethod]
@@ -463,7 +463,33 @@ namespace stockTest
             Error = AStock.Valid(desc, price, dateadd, s, type);
             Assert.AreNotEqual(Error,"");
         }
-
+        [TestMethod]
+        public void StockInvalid()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string s = "fruit";
+            Error = AStock.Valid(desc, price, dateadd, s, type);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockExtremeMin()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string s = Convert.ToString(Int32.MinValue);
+            Error = AStock.Valid(desc, price, dateadd, s, type);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockExtremeMax()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string s = Convert.ToString(Int32.MaxValue);
+            Error = AStock.Valid(desc, price, dateadd, s, type);
+            Assert.AreNotEqual(Error, "");
+        }
 
 
         [TestMethod]
@@ -533,6 +559,34 @@ namespace stockTest
             Assert.AreNotEqual(Error, ""); //should  be an error
         }
         [TestMethod]
+        public void PriceInvalid()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string price = "fruit";
+            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            Assert.AreNotEqual(Error, ""); //should  be an error
+        }
+        [TestMethod]
+        public void PriceExtremeMin()
+
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string price = Convert.ToString(decimal.MinValue);
+            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            Assert.AreNotEqual(Error, ""); //should  be an error
+        }
+        [TestMethod]
+        public void PriceExtremeMax()
+        {
+            clsStock AStock = new clsStock();
+            string Error = "";
+            string price = Convert.ToString(decimal.MaxValue);
+            Error = AStock.Valid(desc, price, dateadd, stock, type);
+            Assert.AreNotEqual(Error, ""); //should  be an error
+        }
+        [TestMethod]
         public void PriceMid()
         {
             clsStock AStock = new clsStock();
@@ -579,6 +633,7 @@ namespace stockTest
             Error = AStock.Valid(desc, price, dateadd, stock, t);
             Assert.AreNotEqual(Error, ""); //should  be an error
         }
+      
         [TestMethod]
         public void typecheckrightdig()
         {

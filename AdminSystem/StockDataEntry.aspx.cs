@@ -17,21 +17,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStock astock = new clsStock();
-        String watchid =(txtWatchID.Text);
+        Int32 watchid = Convert.ToInt32(txtWatchID.Text);
         String desc= txtDesc.Text;
         String price =(txtPrice.Text);
         String dateadd =(txtDateAdded.Text);
         String stock = (txtStock.Text);
         String type = txtType.Text;
         String avail = available.Text;
-        Session["astock"] = astock;
-        Response.Redirect("StockViewer.aspx");
+       
         String err = "";
         err = astock.Valid(desc, price, dateadd, stock, type);
         if (err == "")
         {
 
-            astock.watchid = int.Parse(txtWatchID.Text);
+            astock.watchid = watchid;
+                
             astock.desc = txtDesc.Text;
             astock.price = decimal.Parse(txtPrice.Text);
             astock.dateadd = DateTime.Parse(txtDateAdded.Text);
@@ -39,6 +39,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             astock.type = txtType.Text;
             astock.available = available.Checked;
             Session["astock"] = astock;
+            clsStock ThisStock = astock;
+            clsStockCollection stocklist = new clsStockCollection();
+            if (watchid == -1)
+            {
+                stocklist.ThisStock = astock;
+                stocklist.Add();
+            }
+            else {
+                stocklist.ThisStock.Find(watchid);
+                stocklist.ThisStock = astock;
+            }
             Response.Redirect("StockViewer.aspx");
         }
         else lblError.Text = err;
@@ -87,5 +98,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
             available.Checked = AStock.available;
         }
+    }
+    void DisplayStock() {
+        clsStockCollection stockc = new clsStockCollection();
+        stockc.ThisStock.Find(Convert.ToInt32(txtWatchID.Text));
+        txtDateAdded.Text = stockc.ThisStock.dateadd.ToString();
+        txtDesc.Text = stockc.ThisStock.desc;
+        txtPrice.Text = stockc.ThisStock.price.ToString();
+        txtStock.Text= stockc.ThisStock.stock.ToString();
+        txtType.Text= stockc.ThisStock.type.ToString();
+        available.Checked = stockc.ThisStock.available;
     }
 }

@@ -89,7 +89,7 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@watchid", testno);
-            DB.Execute("sproc_dbWatch_filterby");
+            DB.Execute("sproc_tblWatch_filterby");
             if (DB.Count == 1)
             {
                 mwatchid = Convert.ToInt32(DB.DataTable.Rows[0]["watchid"]);
@@ -120,13 +120,13 @@ namespace ClassLibrary
 
                 dateaddtmp = Convert.ToDateTime(dateadd);
 
-                if (dateaddtmp < DateTime.Now.Date.AddYears(-40))
+                if (dateaddtmp <= DateTime.Now.Date.AddYears(-10))
                 {
-                    err = err + "Your date cannot be over 40 years past today.";
+                    err = err + "Your date cannot be over 10 years past today.";
                 }
-                if (dateaddtmp > DateTime.Now.Date.AddYears(5))
+                if (dateaddtmp >= DateTime.Now.Date.AddYears(2))
                 {
-                    err = err + "Your date cannot be over 5 years in the future.";
+                    err = err + "Your date cannot be over 2 years in the future.";
                 }
 
             }
@@ -146,21 +146,33 @@ namespace ClassLibrary
             {
                 err += "You must enter either digital or analog           , please ensure you get the casing correct.";
             }
-            if (Convert.ToDecimal(price) < 1.0m)
+            try
             {
-                err = err + "too low";
+                if (Convert.ToDecimal(price) < 1.0m)
+                {
+                    err = err + "too low";
+                }
+                if (Convert.ToDecimal(price) > 1000000.0m)
+                {
+                    err = err + "too high";
+                }
             }
-            if (Convert.ToDecimal(price) > 1000000.0m)
-            {
-                err = err + "too high";
+            catch {
+                err += "no";
             }
-            if (Convert.ToInt32(stock) < 0)
+            try
             {
-                err = err + "too less";
+                if (Convert.ToInt32(stock) <= 0)
+                {
+                    err = err + "too less";
+                }
+                if (Convert.ToInt32(stock) > 100)
+                {
+                    err = err + "too many";
+                }
             }
-            if (Convert.ToInt32(stock) > 100)
-            {
-                err = err + "too many";
+            catch {
+                err += "no";
             }
             return err;
         }
