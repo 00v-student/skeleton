@@ -35,7 +35,7 @@ namespace ClassLibrary
             while (Index < RecordCount)
             {
                 clsStock AStock = new clsStock();
-
+                AStock.type = Convert.ToString(DB.DataTable.Rows[Index]["type"]);
                 AStock.watchid = Convert.ToInt16(DB.DataTable.Rows[Index]["watchid"]);
                 AStock.desc = Convert.ToString(DB.DataTable.Rows[Index]["desc"]);
                 AStock.price = Convert.ToDecimal(DB.DataTable.Rows[Index]["price"]);
@@ -102,7 +102,7 @@ namespace ClassLibrary
         {
             //deletes the record pointed to by watchid
             clsDataConnection DB = new clsDataConnection();
-            //DB.AddParameter("@watchid", mThisStock.watchid);
+            DB.AddParameter("@watchid", mThisStock.watchid);
             DB.Execute("sproc_tblWatch_Delete");
         }
 
@@ -112,6 +112,7 @@ namespace ClassLibrary
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
+            DB.AddParameter("@watchid", mThisStock.watchid);
             DB.AddParameter("@dateadd", mThisStock.dateadd);
             DB.AddParameter("@available", mThisStock.available);
             DB.AddParameter("@price", mThisStock.price);

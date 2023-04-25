@@ -120,11 +120,11 @@ namespace ClassLibrary
 
                 dateaddtmp = Convert.ToDateTime(dateadd);
 
-                if (dateaddtmp <= DateTime.Now.Date.AddYears(-10))
+                if (dateaddtmp < DateTime.Now.Date.AddYears(-10))
                 {
                     err = err + "Your date cannot be over 10 years past today.";
                 }
-                if (dateaddtmp >= DateTime.Now.Date.AddYears(2))
+                if (dateaddtmp > DateTime.Now.Date.AddYears(2))
                 {
                     err = err + "Your date cannot be over 2 years in the future.";
                 }

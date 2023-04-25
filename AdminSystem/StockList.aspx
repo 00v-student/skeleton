@@ -10,7 +10,7 @@
     <form id="lblError" runat="server">
         <div>
         </div>
-        <asp:ListBox ID="lstStockList" runat="server" Height="80px" OnSelectedIndexChanged="lstStockList_SelectedIndexChanged" Width="128px"></asp:ListBox>
+        <asp:ListBox ID="lstStockList" runat="server" Height="80px" OnSelectedIndexChanged="Page_Load" Width="128px"></asp:ListBox>
         <p>
             <asp:Button ID="BtnAdd" runat="server" OnClick="BtnAdd_Click" Text="Add" />
             <asp:Button ID="BtnDelete" runat="server" Text="Delete" OnClick="BtnDelete_Click" />

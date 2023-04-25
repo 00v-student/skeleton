@@ -370,7 +370,7 @@ namespace stockTest
             clsStock AStock = new clsStock();
             string Error = "";
             DateTime TestDate;
-            TestDate = DateTime.Now.Date.AddYears(-11);
+            TestDate = DateTime.Now.Date.AddYears(-9);
             string date = TestDate.ToString();
             Error += AStock.Valid(desc, price, date, stock, type);
             Assert.AreEqual(Error, "");
