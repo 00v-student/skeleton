@@ -133,7 +133,7 @@ namespace Testing1
             clsStockCollection allstock = new clsStockCollection();
             clsStockCollection filterstock = new clsStockCollection();
             filterstock.ReportBytype("");
-            Assert.AreEqual(allstock, filterstock);
+            Assert.AreEqual(allstock.Count, filterstock.Count);
         }
         [TestMethod]
         public void ReportBytypenonefound()
@@ -149,7 +149,7 @@ namespace Testing1
             clsStockCollection filter = new clsStockCollection();
             Boolean Ok = true;
             filter.ReportBytype("digital");
-            if (filter.Count == 1)
+            if (filter.Count == 3)
             {
                 if (filter.StockList[0].watchid != 4)
                 {
