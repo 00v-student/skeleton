@@ -22,8 +22,8 @@
         <asp:Label ID="lblStaffName" runat="server" height="27px" style="z-index: 1; left: 24px; top: 341px; position: absolute" Text="Staff Name" width="134px"></asp:Label>
         <asp:TextBox ID="txtOrderDescription" runat="server" style="z-index: 1; left: 200px; top: 198px; position: absolute" width="188px"></asp:TextBox>
         <asp:TextBox ID="txtOrderTotal" runat="server" style="z-index: 1; left: 200px; top: 244px; position: absolute" width="188px"></asp:TextBox>
-        <asp:TextBox ID="txtCustomerID" runat="server" style="z-index: 1; left: 200px; top: 298px; position: absolute" width="188px"></asp:TextBox>
-        <asp:TextBox ID="txtStaffName" runat="server" style="z-index: 1; left: 200px; top: 346px; position: absolute" width="188px"></asp:TextBox>
+        <asp:TextBox ID="txtCustomerID" runat="server" style="z-index: 1; left: 200px; top: 298px; position: absolute" width="188px" OnTextChanged="txtCustomerID_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="txtStaffName" runat="server" style="z-index: 1; left: 200px; top: 346px; position: absolute" width="188px" OnTextChanged="txtStaffName_TextChanged"></asp:TextBox>
         <asp:CheckBox ID="chkOrderComplete" runat="server" style="z-index: 1; left: 24px; top: 392px; position: absolute" Text="Order Complete" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 24px; top: 437px; position: absolute"></asp:Label>
         <p>
