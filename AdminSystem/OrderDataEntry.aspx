@@ -11,11 +11,9 @@
         This be order entry page
         <div>
         </div>
-        <asp:Label ID="lblOrderNumber" runat="server" style="z-index: 1; left: 24px; top: 108px; position: absolute" Text="OrderNumber"></asp:Label>
-        <asp:TextBox ID="txtOrderNumber" runat="server" style="z-index: 1; left: 200px; top: 108px; position: absolute; margin-bottom: 0px"></asp:TextBox>
         <p>
-            <asp:Label ID="lblOrderNumber0" runat="server" style="z-index: 1; left: 24px; top: 108px; position: absolute" Text="OrderNumber"></asp:Label>
-        </p>
+        <asp:Label ID="lblOrderNumber" runat="server" style="z-index: 1; left: 24px; top: 108px; position: absolute" Text="OrderNumber"></asp:Label>
+        <asp:TextBox ID="txtOrderNumber" runat="server" style="z-index: 1; top: 105px; position: absolute; margin-bottom: 0px; left: 200px;" width="188"></asp:TextBox>
         <asp:TextBox ID="txtOrderDate" runat="server" style="z-index: 1; left: 200px; top: 153px; position: absolute" width="188px"></asp:TextBox>
         <asp:Label ID="lblOrderDate" runat="server" style="z-index: 1; left: 24px; top: 152px; position: absolute; width: 134px;" Text="Order Date" height="27px"></asp:Label>
         <asp:Label ID="lblOrderDescription" runat="server" height="27px" style="z-index: 1; left: 24px; top: 197px; position: absolute; width: 179px" Text="Order Description"></asp:Label>
@@ -29,6 +27,7 @@
         <asp:CheckBox ID="chkOrderComplete" runat="server" style="z-index: 1; left: 24px; top: 392px; position: absolute" Text="Order Complete" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 24px; top: 437px; position: absolute"></asp:Label>
         <p>
+            </p>
             <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 17px; top: 474px; position: absolute" Text="Ok" />
         </p>
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 76px; top: 474px; position: absolute" Text="Cancel" />
