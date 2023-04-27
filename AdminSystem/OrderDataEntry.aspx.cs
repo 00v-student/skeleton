@@ -17,12 +17,56 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOk_Click(object sender, EventArgs e)
     {
         //create a new instance of the clsOrders
-        clsOrders AnOrder = new clsOrders;
+        clsOrders AnOrder = new clsOrders();
+        
         //capture the Order Number
-        AnOrder.OrderNumber = txtOrderNumber;
+        AnOrder.OrderNumber = Convert.ToInt32(txtOrderNumber.Text);
         //store the address in the session object
-        Session["anOrder"] = AnOrder;
+        Session["AnOrder"] = AnOrder;
         //navigate to the viewer page
         Response.Redirect("OrderViewer.aspx");
+
+        //capture the Order description
+        AnOrder.OrderDescription = txtOrderDescription.Text;
+        //store the address in the session object
+        Session["AnOrder"] = AnOrder;
+        //navigate to the viewer page
+        Response.Redirect("OrderViewer.aspx");
+
+        //capture the Order Date
+        AnOrder.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
+        //store the address in the session object
+        Session["AnOrder"] = AnOrder;
+        //navigate to the viewer page
+        Response.Redirect("OrderViewer.aspx");
+
+        //capture the Order Total
+        AnOrder.OrderTotal = Convert.ToInt32(txtOrderTotal.Text);
+        //store the address in the session object
+        Session["AnOrder"] = AnOrder;
+        //navigate to the viewer page
+        Response.Redirect("OrderViewer.aspx");
+
+        //capture the Order Complete
+        AnOrder.Active = chkOrderComplete.Checked;
+        //store the address in the session object
+        Session["AnOrder"] = AnOrder;
+        //navigate to the viewer page
+        Response.Redirect("OrderViewer.aspx");
+
+        //capture the Customer ID
+        AnOrder.CustomerID = Convert.ToInt32(txtOrderTotal.Text);
+        //store the address in the session object
+        Session["AnOrder"] = AnOrder;
+        //navigate to the viewer page
+        Response.Redirect("OrderViewer.aspx");
+
+        //capture the Staff Name
+        AnOrder.StaffName = txtOrderDescription.Text;
+        //store the address in the session object
+        Session["AnOrder"] = AnOrder;
+        //navigate to the viewer page
+        Response.Redirect("OrderViewer.aspx");
+
     }
 }
