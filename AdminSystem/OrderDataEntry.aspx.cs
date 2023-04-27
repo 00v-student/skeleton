@@ -18,13 +18,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of the clsOrders
         clsOrders AnOrder = new clsOrders();
-        
+
         //capture the Order Number
         AnOrder.OrderNumber = Convert.ToInt32(txtOrderNumber.Text);
         //store the address in the session object
         Session["AnOrder"] = AnOrder;
         //navigate to the viewer page
         Response.Redirect("OrderViewer.aspx");
+    
 
         //capture the Order description
         AnOrder.OrderDescription = txtOrderDescription.Text;
@@ -67,6 +68,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["AnOrder"] = AnOrder;
         //navigate to the viewer page
         Response.Redirect("OrderViewer.aspx");
+
+    }
+
+    protected void txtStaffName_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void txtCustomerID_TextChanged(object sender, EventArgs e)
+    {
 
     }
 }
