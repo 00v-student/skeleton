@@ -114,7 +114,7 @@ namespace Testing4
             //Booelan variable to store the results of the validation
             Boolean Found = false;
             //Create some test data to use with the method
-            Int32 OrderNumber = 21;
+            Int32 OrderNumber = 1;
             //Invoke the method
             Found = AnOrders.Find(OrderNumber);
             //test to see if the result is true
@@ -133,7 +133,7 @@ namespace Testing4
             //Boolean variable to record if data is ok (assume it is)
             Boolean Ok = true;
             //Create some test data to use with the method
-            Int32 OrderNumber = 21;
+            Int32 OrderNumber = 1;
             //Invoke the method
             Found = AnOrders.Find(OrderNumber);
             //Check the address no
@@ -156,7 +156,7 @@ namespace Testing4
             //Boolean variable to record if data is ok (assume it is)
             Boolean Ok = true;
             //Create some test data to use with the method
-            Int32 OrderNumber = 21;
+            Int32 OrderNumber = 4;
             //Invoke the method
             Found = AnOrders.Find(OrderNumber);
             //Check the address no
@@ -178,7 +178,7 @@ namespace Testing4
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderNumber = 21;
+            Int32 OrderNumber = 7;
             //invoke the method
             Found = AnOrders.Find(OrderNumber);
             //check the property
@@ -200,7 +200,7 @@ namespace Testing4
             //Boolean variable to record if data is ok (assume it is)
             Boolean Ok = true;
             //Create some test data to use with the method
-            Int32 OrderNumber = 21;
+            Int32 OrderNumber = 3;
             //Invoke the method
             Found = AnOrders.Find(OrderNumber);
             //Check the address no
@@ -222,7 +222,7 @@ namespace Testing4
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderNumber = 21;
+            Int32 OrderNumber = 2;
             //invoke the method
             Found = AnOrders.Find(OrderNumber);
             //check the property
@@ -244,7 +244,7 @@ namespace Testing4
             //Boolean variable to record if data is ok (assume it is)
             Boolean Ok = true;
             //Create some test data to use with the method
-            Int32 OrderNumber = 21;
+            Int32 OrderNumber = 5;
             //Invoke the method
             Found = AnOrders.Find(OrderNumber);
             //Check the address no
@@ -266,7 +266,7 @@ namespace Testing4
             //Boolean variable to record if data is ok (assume it is)
             Boolean Ok = true;
             //Create some test data to use with the method
-            Int32 OrderNumber = 21;
+            Int32 OrderNumber = 6;
             //Invoke the method
             Found = AnOrders.Find(OrderNumber);
             //Check the address no
