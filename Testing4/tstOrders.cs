@@ -12,7 +12,7 @@ namespace Testing4
         //create some test data to pass to the method
         string OrderDescription = "BlueWatch";
         string OrderTotal = "20.00";
-        string CustomerID = "45";
+        string CustomerID = "42";
         string StaffName = "John";
         string OrderDate = "21/02/2021";
 
@@ -29,12 +29,12 @@ namespace Testing4
 
 
         [TestMethod]
-        public void OrderNumber()
+        public void OrderNumberPropertyOk()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
             //create some test data to assign to the property
-            int TestData = 1232;
+            Int32 TestData = 1;
             //assign the data to the property
             AnOrder.OrderNumber = TestData;
             //test to see that the two values are the same
@@ -42,7 +42,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void OrderDate()
+        public void OrderDatePropertyOK()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
@@ -56,7 +56,7 @@ namespace Testing4
 
 
         [TestMethod]
-        public void OrderDescription()
+        public void OrderDescriptionPropertyOK()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
@@ -68,7 +68,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void OrderTotal()
+        public void OrderTotalPropertyOk()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
@@ -80,11 +80,11 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void CustomerID()
+        public void CustomerIDPropertyOk()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
-            int TestData = 153;
+            Int32 TestData = 1;
             //assign the data to the property
             AnOrder.OrderTotal = TestData;
             //test to see that the two values are the same
@@ -92,7 +92,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void StaffName()
+        public void StaffNamePropertyOk()
         {
             //create an instance of the class we want to create
             clsOrders AnOrder = new clsOrders();
@@ -104,7 +104,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void OrderComplete()
+        public void OrderCompletePropertyOk()
         {
             //create an instance of the class we want to create
             clsOrders AnOrders = new clsOrders();
@@ -143,11 +143,11 @@ namespace Testing4
             //Boolean variable to record if data is ok (assume it is)
             Boolean Ok = true;
             //Create some test data to use with the method
-            Int32 Testno = 1;
+            Int32 OrderNumber = 1;
             //Invoke the method
-            Found = AnOrders.Find(Testno);
+            Found = AnOrders.Find(OrderNumber);
             //Check the address no
-            if (AnOrders.OrderNumber != 21)
+            if (AnOrders.OrderNumber != 1)
             {
                 Ok = false;
             }
@@ -258,7 +258,7 @@ namespace Testing4
             //Invoke the method
             Found = AnOrders.Find(OrderNumber);
             //Check the address no
-            if (AnOrders.CustomerID != 153)
+            if (AnOrders.CustomerID != 1)
             {
                 Ok = false;
             }
@@ -296,32 +296,12 @@ namespace Testing4
             //String variable to store any error message
             String Error = "";
             //Invoke the method
-            Error = AnOrders.Valid(OrderDescription,StaffName,OrderTotal,OrderDate,OrderComplete,CustomerID);
+            Error = AnOrders.Valid(OrderDescription,StaffName,OrderTotal,OrderDate,CustomerID);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
-
         }
+       }
 
-        public void OrderDescriptionMinLessOne()
-        {
-            //create an instance of the class we want to create
-            clsOrders AnOrders = new clsOrders();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass the method
-            string OrderDescription = ""; //this should trigger an error
-            //invoke the method
-            Error = AnOrders.Valid(OrderDescription, StaffName, OrderTotal, OrderDate, OrderComplete);
-            //Test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
-        }
-
-
-
-
-
-
-    }
 }
 
 
