@@ -8,6 +8,16 @@ namespace Testing4
     [TestClass]
     public class tstOrders
     {
+        //good test data
+        //create some test data to pass to the method
+        string OrderDescription = "BlueWatch";
+        string OrderTotal = "20.00";
+        string CustomerID = "45";
+        string StaffName = "John";
+        string OrderDate = "21/02/2021";
+
+
+
         [TestMethod]
         public void InstanceOk()
         {
@@ -114,9 +124,9 @@ namespace Testing4
             //Booelan variable to store the results of the validation
             Boolean Found = false;
             //Create some test data to use with the method
-            Int32 OrderNumber = 1;
+            Int32 Testno = 1;
             //Invoke the method
-            Found = AnOrders.Find(OrderNumber);
+            Found = AnOrders.Find(Testno);
             //test to see if the result is true
             Assert.IsTrue(Found);
         }
@@ -133,9 +143,9 @@ namespace Testing4
             //Boolean variable to record if data is ok (assume it is)
             Boolean Ok = true;
             //Create some test data to use with the method
-            Int32 OrderNumber = 1;
+            Int32 Testno = 1;
             //Invoke the method
-            Found = AnOrders.Find(OrderNumber);
+            Found = AnOrders.Find(Testno);
             //Check the address no
             if (AnOrders.OrderNumber != 21)
             {
@@ -156,7 +166,7 @@ namespace Testing4
             //Boolean variable to record if data is ok (assume it is)
             Boolean Ok = true;
             //Create some test data to use with the method
-            Int32 OrderNumber = 4;
+            Int32 OrderNumber = 1;
             //Invoke the method
             Found = AnOrders.Find(OrderNumber);
             //Check the address no
@@ -178,7 +188,7 @@ namespace Testing4
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderNumber = 7;
+            Int32 OrderNumber = 2;
             //invoke the method
             Found = AnOrders.Find(OrderNumber);
             //check the property
@@ -200,7 +210,7 @@ namespace Testing4
             //Boolean variable to record if data is ok (assume it is)
             Boolean Ok = true;
             //Create some test data to use with the method
-            Int32 OrderNumber = 3;
+            Int32 OrderNumber = 1;
             //Invoke the method
             Found = AnOrders.Find(OrderNumber);
             //Check the address no
@@ -222,7 +232,7 @@ namespace Testing4
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderNumber = 2;
+            Int32 OrderNumber = 1;
             //invoke the method
             Found = AnOrders.Find(OrderNumber);
             //check the property
@@ -244,7 +254,7 @@ namespace Testing4
             //Boolean variable to record if data is ok (assume it is)
             Boolean Ok = true;
             //Create some test data to use with the method
-            Int32 OrderNumber = 5;
+            Int32 OrderNumber = 3;
             //Invoke the method
             Found = AnOrders.Find(OrderNumber);
             //Check the address no
@@ -266,7 +276,7 @@ namespace Testing4
             //Boolean variable to record if data is ok (assume it is)
             Boolean Ok = true;
             //Create some test data to use with the method
-            Int32 OrderNumber = 6;
+            Int32 OrderNumber = 1;
             //Invoke the method
             Found = AnOrders.Find(OrderNumber);
             //Check the address no
@@ -277,6 +287,37 @@ namespace Testing4
             //Test to see if that result is correct
             Assert.IsTrue(Ok);
         }
+
+        [TestMethod]
+        public void ValidMethodOk()
+        {
+            //Create an instance of the class we want to create
+            clsOrders AnOrders = new clsOrders();
+            //String variable to store any error message
+            String Error = "";
+            //Invoke the method
+            Error = AnOrders.Valid(OrderDescription,StaffName,OrderTotal,OrderDate,OrderComplete,CustomerID);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        public void OrderDescriptionMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrders AnOrders = new clsOrders();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string OrderDescription = ""; //this should trigger an error
+            //invoke the method
+            Error = AnOrders.Valid(OrderDescription, StaffName, OrderTotal, OrderDate, OrderComplete);
+            //Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
 
 
 
