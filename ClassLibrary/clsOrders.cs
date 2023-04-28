@@ -161,5 +161,23 @@ namespace ClassLibrary
 
             }
         }
+
+        public string Valid(string orderDescription, string staffName, string orderTotal, string orderDate, string orderComplete, string customerID)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //if the OrderDescription is blank
+            if (OrderDescription.Length == 0)
+            {
+                //record the error
+                Error = Error + "The order description may not be blank : ";
+
+            }
+            //return any error messages
+            return Error;
+        }
+
+
+
     }
 }

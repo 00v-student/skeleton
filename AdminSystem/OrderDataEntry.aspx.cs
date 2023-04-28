@@ -80,4 +80,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
-}
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //Create an instance of the Order class
+        clsOrders AnOrder = new clsOrders();
+        //Variable to store the primary ke
+        Int32 OrderNumber;
+        //Variable to store the primary key
+        Boolean Found = false;
+        //Get the primary key entered by the user
+        OrderNumber = Convert.ToInt32(txtOrderNumber.Text);
+        //find the record
+        Found = AnOrder.Find(OrderNumber);
+        //if found
+        if (Found == true)
+        {
+            //dipslay all values of the properties in the form
+            txtOrderNumber.Text = Convert.ToString(AnOrder.OrderNumber);
+            txtOrderDescription.Text = AnOrder.OrderDescription;
+            txtOrderTotal.Text = Convert.ToString(AnOrder.OrderTotal);
+            txtStaffName.Text = Convert.ToString(AnOrder.StaffName);
+            txtOrderDate.Text = AnOrder.OrderDate.ToString();
+            txtCustomerID.Text = Convert.ToString(AnOrder.CustomerID);
+            chkOrderComplete.Checked = AnOrder.Active;
+        }
+    }
+   }

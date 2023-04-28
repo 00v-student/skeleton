@@ -6,9 +6,9 @@
 <head runat="server">
     <title></title>
 </head>
-<body style="height: 38px">
+<body style="height: 100px">
     <form id="form1" runat="server">
-        This be order entry page
+        
         <div>
         </div>
         <p>
@@ -27,10 +27,14 @@
         <asp:CheckBox ID="chkOrderComplete" runat="server" style="z-index: 1; left: 24px; top: 392px; position: absolute" Text="Order Complete" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 24px; top: 437px; position: absolute"></asp:Label>
         <p>
-            </p>
+            &nbsp;</p>
             <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 17px; top: 474px; position: absolute" Text="Ok" />
         </p>
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 76px; top: 474px; position: absolute" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 76px; top: 475px; position: absolute" Text="Cancel" />
+        <asp:Button ID="btnFind"  runat="server" style="z-index: 1; left: 413px; top: 106px; position: absolute" Text="Find" OnClick="btnFind_Click" />
+        <p>
+            &nbsp;</p>
+        
     </form>
 </body>
 </html>
