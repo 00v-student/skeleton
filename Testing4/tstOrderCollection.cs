@@ -44,18 +44,7 @@ namespace ClassLibrary
             Assert.AreEqual(AllOrders.OrderList, TestList);
         }
 
-        [TestMethod]
-        public void CountPropertyOk()
-        {
-            //create an instance of the class we want to create
-            clsOrderCollection AllOrders = new clsOrderCollection();
-            //create some test data to assign to the proeperty
-            Int32 SomeCount = 0;
-            //Assign data to the property
-            AllOrders.Count = SomeCount;
-            //test to see that the two values are the same
-            Assert.AreEqual(AllOrders.Count, SomeCount);
-        }
+        
 
         [TestMethod]
         public void ThisOrderListPropertyOk()
@@ -67,8 +56,9 @@ namespace ClassLibrary
             //Set the properties of the test object
             TestOrders.Active = true;
             TestOrders.OrderNumber = 1;
-            TestOrders.OrderDescription = "watches";
-            TestOrders.OrderTotal = 20;
+            TestOrders.OrderDescription = "bluewatch";
+            TestOrders.OrderDate = DateTime.Now.Date;
+            TestOrders.OrderTotal = 1;
             TestOrders.StaffName = "John";
             TestOrders.CustomerID = 45;
             //Assign the data to the property
@@ -80,19 +70,28 @@ namespace ClassLibrary
         [TestMethod]
         public void ListAndCountOk()
         {
+            //create an instance of the class we want to create
             clsOrderCollection AllOrders = new clsOrderCollection();
+            //create some test data to assign to the property
+            //In this case the data needs to be a list of objects
             List<clsOrders> TestList = new List<clsOrders>();
+            //add an item to the list
+            //create the item of test data
             clsOrders TestItem = new clsOrders();
+            //set its properties
+            TestItem.OrderNumber = 2;
+            TestItem.OrderTotal = 2;
+            TestItem.OrderDescription = "brownwatch";
+            TestItem.OrderDate = DateTime.Now.Date;
+            TestItem.StaffName = "brownwatch";
+            TestItem.CustomerID = 60;
             TestItem.Active = true;
-            TestItem.OrderNumber = 1;
-            TestItem.OrderDescription = "watches";
-            TestItem.OrderTotal = 20;
-            TestItem.StaffName = "John";
-            TestItem.CustomerID = 45;
+            //add the item to the test list
             TestList.Add(TestItem);
+            //assign the data to the property
             AllOrders.OrdersList = TestList;
+            //test to see if the two values are the same
             Assert.AreEqual(AllOrders.Count, TestList.Count);
         }
-
     }
 }
