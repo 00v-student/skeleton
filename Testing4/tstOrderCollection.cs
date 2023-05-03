@@ -44,7 +44,6 @@ namespace ClassLibrary
             Assert.AreEqual(AllOrders.OrderList, TestList);
         }
 
-        
 
         [TestMethod]
         public void ThisOrderListPropertyOk()
@@ -93,5 +92,55 @@ namespace ClassLibrary
             //test to see if the two values are the same
             Assert.AreEqual(AllOrders.Count, TestList.Count);
         }
+
+        [TestMethod]
+        public void AddMethodOk()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();       
+            clsOrders TestItem = new clsOrders();
+            Int32 PrimaryKey = 0;
+            TestItem.OrderNumber = 2;
+            TestItem.OrderTotal = 2;
+            TestItem.OrderDescription = "brownwatch";
+            TestItem.OrderDate = DateTime.Now.Date;
+            TestItem.StaffName = "brownwatch";
+            TestItem.CustomerID = 60;
+            TestItem.Active = true;
+            AllOrders.ThisOrders = TestItem;
+            PrimaryKey = AllOrders.Add();
+            AllOrders.ThisOrders.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrders, TestItem);
+        }
+
+
+        [TestMethod]
+        public void UpdateMethodOk()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrders TestItem = new clsOrders();
+            Int32 PrimaryKey = 0;
+            TestItem.OrderNumber = 2;
+            TestItem.OrderTotal = 2;
+            TestItem.OrderDescription = "brownwatch";
+            TestItem.OrderDate = DateTime.Now.Date;
+            TestItem.StaffName = "Jeff";
+            TestItem.CustomerID = 60;
+            TestItem.Active = true;
+            AllOrders.ThisOrders = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderNumber = PrimaryKey;
+            TestItem.OrderNumber = 5;
+            TestItem.OrderTotal = 1;
+            TestItem.OrderDescription = "bluewatch";
+            TestItem.OrderDate = DateTime.Now.Date;
+            TestItem.StaffName = "John";
+            TestItem.CustomerID = 40;
+            TestItem.Active = false;
+            AllOrders.ThisOrders = TestItem;
+            AllOrders.Update();
+            AllOrders.ThisOrders.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrders, TestItem);
+        }
+
     }
 }

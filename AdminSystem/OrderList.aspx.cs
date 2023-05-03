@@ -30,4 +30,12 @@ public partial class _1_List : System.Web.UI.Page
         lstOrderList.DataBind();
 
         }
+
+
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["OrderNumber"] = -1;
+        Response.Redirect("OrderDataEntry");
     }
+}

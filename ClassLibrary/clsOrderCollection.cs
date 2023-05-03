@@ -9,7 +9,10 @@ namespace ClassLibrary
         //private data member for the list
         List<clsOrders> mOrderList = new List<clsOrders>();
 
-    public clsOrderCollection()
+        clsOrders mThisOrders = new clsOrders();
+
+
+        public clsOrderCollection()
         {
         //create the items of test data
         clsOrders TestItem = new clsOrders(); 
@@ -37,18 +40,12 @@ namespace ClassLibrary
         mOrderList.Add(TestItem);  
         }
 
-        public clsOrderCollection()
+        void PopulateArray(clsDataConnection DB)
         {
-            //var for the index
             Int32 Index = 0;
-            //var to store the record count
-            Int32 RecordCount = 0;
-            //Object for data connection
-            clsDataConnection DB = new clsDataConnection();
-            //execute the stored procedure
-            DB.Execute("sproc_tblOrders_SelectAll");
-            //Get the count of records
+            Int32 RecordCount;
             RecordCount = DB.Count;
+            mOrderList = new List<clsOrders>(); //clear the mStaffList var
             //while there are records to process
             while (Index < RecordCount)
             {
@@ -66,10 +63,10 @@ namespace ClassLibrary
                 mOrderList.Add(AnOrders);
                 //Point at the next record
                 Index++;
-
             }
-
         }
+
+        
 
         public List<clsOrders> OrderList
         {
@@ -98,11 +95,41 @@ namespace ClassLibrary
             }
         }
 
-        public clsOrders ThisOrders { get; set; }
+        public clsOrders ThisOrders
+        {
+            get
+            {
+                return mThisOrders;
+            }
+            set
+            {
+                mThisOrders = value;
+            }
+        }
 
 
         public List<clsOrders> OrdersList { get; set; }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderNumber", mThisOrders.OrderNumber);
+            DB.AddParameter("@OrderDescription", mThisOrders.OrderDescription);
+            DB.AddParameter("@OrderTotal", mThisOrders.OrderTotal);
+            DB.AddParameter("@OrderComplete", mThisOrders.Active);
+            DB.AddParameter("@OrderDate", mThisOrders.OrderDate);
+            DB.AddParameter("@StaffName", mThisOrders.StaffName);
+            DB.AddParameter("@CustomerID", mThisOrders.CustomerID);
+
+            return DB.Execute("sproc_tblOrders_Insert");
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
     }
+
 
 
 

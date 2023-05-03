@@ -91,8 +91,6 @@ namespace ClassLibrary
                 //this line of code allows data into the property
                 mOrderTotal = value;
             }
-
-
         }
 
         //Private data member for the CustomerID property

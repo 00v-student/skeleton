@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body style="height: 100px">
 
 
 
@@ -17,7 +17,14 @@
 
 
     <form id="form1" runat="server">
-        <asp:ListBox ID="lstOrderList" runat="server"></asp:ListBox>
+        <asp:ListBox ID="lstOrderList" runat="server" Height="504px" Width="412px"></asp:ListBox>
+        <p>
+        <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="Button1_Click" style="height: 35px" />
+        </p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
     </form>
 
 
