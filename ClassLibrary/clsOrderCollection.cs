@@ -13,7 +13,7 @@ namespace ClassLibrary
 
 
         public clsOrderCollection()
-        {
+        { 
         //create the items of test data
         clsOrders TestItem = new clsOrders(); 
         //set its properties
@@ -116,17 +116,40 @@ namespace ClassLibrary
             DB.AddParameter("@OrderNumber", mThisOrders.OrderNumber);
             DB.AddParameter("@OrderDescription", mThisOrders.OrderDescription);
             DB.AddParameter("@OrderTotal", mThisOrders.OrderTotal);
+            DB.AddParameter("@OrderDate", mThisOrders.OrderDate);
+            DB.AddParameter("@StaffName", mThisOrders.StaffName);
+            DB.AddParameter("@CustomerID", mThisOrders.CustomerID);
+
+            DB.Execute("sproc_tblOrders_Insert");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderNumber", mThisOrders.OrderNumber);
+            DB.AddParameter("@OrderDescription", mThisOrders.OrderDescription);
+            DB.AddParameter("@OrderTotal", mThisOrders.OrderTotal);
             DB.AddParameter("@OrderComplete", mThisOrders.Active);
             DB.AddParameter("@OrderDate", mThisOrders.OrderDate);
             DB.AddParameter("@StaffName", mThisOrders.StaffName);
             DB.AddParameter("@CustomerID", mThisOrders.CustomerID);
 
-            return DB.Execute("sproc_tblOrders_Insert");
+            DB.Execute("sproc_tblOrders_Update");
         }
 
-        public void Update()
+        public void Delete()
         {
-            throw new NotImplementedException();
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderNumber", mThisOrders.OrderNumber);
+            DB.Execute("sproc_tblOrders_Delete");
+        }
+
+        public void ReportByOrderDescription(string OrderDescription)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderDescription", OrderDescription);
+            DB.Execute("sproc_tblOrders_FilterByOrderDescription");
+            PopulateArray(DB);
         }
     }
 

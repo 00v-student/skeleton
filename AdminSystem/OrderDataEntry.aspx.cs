@@ -9,8 +9,31 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 OrderNumber;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        OrderNumber = Convert.ToInt32(Session["OrderNumber"]);
+        if (IsPostBack == false)
+        {
+            if (OrderNumber != -1)
+            {
+                DisplayOrders();
+            }
+        }
+    }
+
+    void DisplayOrders()
+    {
+        clsOrderCollection OrderBook = new clsOrderCollection();
+        OrderBook.ThisOrders.Find(OrderNumber);
+        txtOrderNumber.Text = OrderBook.ThisOrders.OrderNumber.ToString();
+        txtOrderDescription.Text = OrderBook.ThisOrders.OrderDescription.ToString();
+        txtOrderTotal.Text = OrderBook.ThisOrders.OrderTotal.ToString();
+        txtOrderDate.Text = OrderBook.ThisOrders.OrderDate.ToString();
+        txtCustomerID.Text = OrderBook.ThisOrders.CustomerID.ToString();
+        txtStaffName.Text = OrderBook.ThisOrders.StaffName.ToString();
 
     }
 
