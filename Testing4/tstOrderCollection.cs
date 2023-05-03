@@ -96,7 +96,7 @@ namespace ClassLibrary
         [TestMethod]
         public void AddMethodOk()
         {
-            clsOrderCollection AllOrders = new clsOrderCollection();       
+            clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrders TestItem = new clsOrders();
             Int32 PrimaryKey = 0;
             TestItem.OrderNumber = 2;
@@ -142,5 +142,75 @@ namespace ClassLibrary
             Assert.AreEqual(AllOrders.ThisOrders, TestItem);
         }
 
+        [TestMethod]
+        public void DeleteMethodOk()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrders TestItem = new clsOrders();
+            Int32 PrimaryKey = 0;
+            TestItem.OrderNumber = 2;
+            TestItem.OrderTotal = 2;
+            TestItem.OrderDescription = "brownwatch";
+            TestItem.OrderDate = DateTime.Now.Date;
+            TestItem.StaffName = "Jeff";
+            TestItem.CustomerID = 60;
+            TestItem.Active = true;
+            AllOrders.ThisOrders = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderNumber = PrimaryKey;
+            AllOrders.ThisOrders.Find(PrimaryKey);
+            AllOrders.Delete();
+            Boolean Found = AllOrders.ThisOrders.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrders, TestItem);
+        }
+
+        [TestMethod]
+        public void ReportByOrderDescription()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByOrderDescription("");
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByOrderDescriptionNoneFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+
+            FilteredOrders.ReportByOrderDescription("xxx xxx");
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+
+
+        [TestMethod]
+        public void ReportByOrderDescriptionTestDataFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            Boolean Ok = true;
+            FilteredOrders.ReportByOrderDescription("yyy yyy");
+            if (FilteredOrders.Count == 2)
+            {
+                if (FilteredOrders.OrderList[0].OrderNumber != 36)
+                {
+                    Ok = false;
+
+                }
+
+                if (FilteredOrders.OrderList[1].OrderNumber != 37)
+                {
+                    Ok = false;
+                }
+                else
+                {
+                    Ok = false;
+                }
+                Assert.IsTrue(Ok);
+            }
+        }
+
     }
 }
+
+        
+    
